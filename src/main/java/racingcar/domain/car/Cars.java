@@ -41,7 +41,7 @@ public class Cars {
     }
 
     public List<Name> getWinnersNames() {
-        return getCarsByPosition(getFirstPosition()).stream().map(car -> car.getName()).collect(Collectors.toList());
+        return getCarsByPosition(getFirstPosition()).stream().map(Car::getName).collect(Collectors.toList());
     }
 
     @Override
