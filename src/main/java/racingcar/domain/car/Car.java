@@ -26,6 +26,10 @@ public class Car implements Comparable<Car> {
         return willMove;
     }
 
+    public boolean isSamePosition(Position position) {
+        return this.position.equals(position);
+    }
+
     public Position getPosition() {
         return position;
     }

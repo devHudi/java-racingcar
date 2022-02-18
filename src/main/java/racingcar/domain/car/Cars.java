@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+    public static final int FIRST_CAR_INDEX = 0;
     private static final int DEFAULT_POSITION = 0;
     private static final int RANDOM_MIN_BOUND = 0;
     private static final int RANDOM_MAX_BOUND = 9;
@@ -54,11 +55,13 @@ public class Cars {
             throw new IllegalArgumentException("아무 차량도 추가되지 않았습니다.");
         }
         Collections.sort(cars);
-        return cars.get(0).getPosition();
+        return cars.get(FIRST_CAR_INDEX).getPosition();
     }
 
     private List<Car> getCarsByPosition(Position position) {
-        return cars.stream().filter((car) -> car.getPosition().equals(position)).collect(Collectors.toList());
+        return cars.stream()
+                .filter((car) -> car.isSamePosition(position))
+                .collect(Collectors.toList());
     }
 
 }
