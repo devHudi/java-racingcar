@@ -1,6 +1,6 @@
 package racingcar.util;
 
-public class RandomGeneratorMock implements RandomGeneratable {
+public class RandomGeneratorStub implements RandomGeneratable {
     private static final int[] randomNumbers = {2, 3, 4, 5};
     private int sequenceCursor = 0;
 

@@ -2,7 +2,7 @@ package racingcar.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.util.RandomGeneratorMock;
+import racingcar.util.RandomGeneratorStub;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -33,7 +33,7 @@ public class CarsTest {
     @DisplayName("moveAll 메소드가 모든 차를 전진시킨다.")
     @Test
     void moveAll() {
-        RandomGeneratorMock randomGeneratorMock = new RandomGeneratorMock();
+        RandomGeneratorStub randomGeneratorStub = new RandomGeneratorStub();
 
         Cars cars = Cars.create();
         cars.add(Car.of("car1", 0));
@@ -43,7 +43,7 @@ public class CarsTest {
         cars.add(Car.of("car5", 0));
 
         for (int i = 0; i < 30; i++) {
-            cars.moveAll(randomGeneratorMock);
+            cars.moveAll(randomGeneratorStub);
         }
 
         assertThat(cars.toString()).isEqualTo("car1 : --------------\n" +
