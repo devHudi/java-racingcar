@@ -12,7 +12,6 @@ public class Cars {
     private static final int RANDOM_MIN_BOUND = 0;
     private static final int RANDOM_MAX_BOUND = 9;
     private static final String TO_STRING_DELIMITER = "\n";
-    private static final String NAME_DELIMITER = ",";
     private final List<Car> cars;
 
     private Cars(List<Car> cars) {
@@ -20,9 +19,7 @@ public class Cars {
     }
 
     public static Cars from(List<Name> names) {
-        List<Car> cars = names.stream()
-                .map((name) -> Car.of(name.toString(), DEFAULT_POSITION))
-                .collect(Collectors.toList());
+        List<Car> cars = names.stream().map((name) -> Car.of(name.toString(), DEFAULT_POSITION)).collect(Collectors.toList());
 
         return new Cars(cars);
     }
@@ -40,22 +37,16 @@ public class Cars {
     }
 
     public void moveAll(RandomGeneratable randomGeneratable) {
-        cars.forEach((car) -> car.move(
-                randomGeneratable.generateNumber(RANDOM_MIN_BOUND, RANDOM_MAX_BOUND))
-        );
+        cars.forEach((car) -> car.move(randomGeneratable.generateNumber(RANDOM_MIN_BOUND, RANDOM_MAX_BOUND)));
     }
 
     public List<Name> getWinnersNames() {
-        return getCarsByPosition(getFirstPosition()).stream()
-                .map(car -> car.getName())
-                .collect(Collectors.toList());
+        return getCarsByPosition(getFirstPosition()).stream().map(car -> car.getName()).collect(Collectors.toList());
     }
 
     @Override
     public String toString() {
-        return cars.stream()
-                .map(Car::toString)
-                .collect(Collectors.joining(TO_STRING_DELIMITER));
+        return cars.stream().map(Car::toString).collect(Collectors.joining(TO_STRING_DELIMITER));
     }
 
     private Position getFirstPosition() {
@@ -67,9 +58,7 @@ public class Cars {
     }
 
     private List<Car> getCarsByPosition(Position position) {
-        return cars.stream()
-                .filter((car) -> car.getPosition().equals(position))
-                .collect(Collectors.toList());
+        return cars.stream().filter((car) -> car.getPosition().equals(position)).collect(Collectors.toList());
     }
 
 }
