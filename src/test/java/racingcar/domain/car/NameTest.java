@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class NameTest {
-    @DisplayName("from 메소드에 정상적인 문자열을 전달하면, 정상적으로 객체가 생성된다.")
+    @DisplayName("from 메소드에 정상적인 문자열을 전달하면, 전달된 이름을 toString 으로 반환하는 Name 객체를 반환한다.")
     @ParameterizedTest
     @ValueSource(strings = {"a", "ab", "abc", "abcd", "abcde", "hudi", "tonic", "a", "토닉", "후디", "123"})
     void from(String input) {
